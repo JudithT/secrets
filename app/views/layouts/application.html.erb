@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      *{
+        margin: auto;
+        text-align: center;
+        border:1px solid white;
+        border-radius:12px;
+      }
+      *{
+        body: background: linear-gradient(to bottom, #fac695 0%,#f5ab66 72%,#f5ab66 72%,#ef8d31 83%);
+      }
+    </style>
+    <title>Secrets</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

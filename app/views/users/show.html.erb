@@ -1,0 +1,48 @@
+Welcome <%=@user.name%><br><br>
+
+New Secret
+<form class="" action="/secret" type="hidden" method="post"><br>
+  <input  name="authenticity_token" value="<%= form_authenticity_token %>" type='hidden'>
+<textarea name="secret_description" rows="8" cols="80"></textarea><br>
+<input type="submit" name="create secret" value="Create Secret">
+</form>
+
+
+<h1> These are my Secrets </h1>
+<table>
+  <tr>
+    <th> Secret Description</th>
+    <th>Number of likes</th>
+    <th>Options</th>
+  </tr>
+  <% @my_secrets.each do |secret| %>
+    <tr>
+      <td><%=secret.description%></td>
+      <td><%=secret.likes.count%>likes</td>
+      <form  action="/delete/<%=secret[:id]%>" method="post">
+        <input  name="authenticity_token" value="<%= form_authenticity_token %>" type='hidden'>
+          <button type="submit" name="button">Delete</button>
+      </form>
+    </tr>
+  <%end%>
+</table>
+
+
+
+
+<h1>Secrets Liked</h1>
+<table>
+  <tr>
+    <th> Secret Description</th>
+    <th>Number of likes</th>
+  </tr>
+  <% @secrets_liked_by_me.each do |secret| %>
+    <tr>
+      <td><%=secret.description%></td>
+      <td><%=secret.likes.count%>likes</td>
+    </tr>
+  <%end%>
+</table>
+
+
+<a href="/secrets">All secrets</a>
